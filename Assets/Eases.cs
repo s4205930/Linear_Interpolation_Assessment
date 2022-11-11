@@ -29,11 +29,6 @@ public class Eases
             if ((t *= 2f) < 1f) { return 0.5f * t * t; }
             else { return -0.5f * ((t -= 1f) * (t - 2f) - 1f); }
         }
-
-        public static float Bezier(float t, float c)
-        {
-            return c * 2 * t * (1 - t) + t * t;
-        }
     }
 
     public class Trig

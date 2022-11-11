@@ -6,8 +6,7 @@ using TMPro;
 public class CustomLerp : MonoBehaviour
 {
 
-    [SerializeField] private CanvasGroup panel;
-    private TextMeshProUGUI objectText;
+    
     bool lerping;
     float lerpFloat;
     float xPos;

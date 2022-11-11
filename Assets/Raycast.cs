@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Raycast : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private CanvasGroup panel;
+    private TextMeshProUGUI objectText;
+
+    
     void Start()
     {
+
+        if (panel != null)
+        {
+            objectText = panel.gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        }
         
     }
 
@@ -18,12 +27,42 @@ public class Raycast : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100f))
+            if (Physics.Raycast(ray, out hit))
             {
                 Debug.DrawLine(ray.origin, hit.point, Color.red, 5f);
-                if (hit.transform.TryGetComponent(out CustomLerp mo)) { mo.StartLerp(); }
+                if (hit.transform.TryGetComponent(out CustomLerp mo)) { 
+                    mo.StartLerp();
+                    StartCoroutine(RevealPanel());
+                    objectText.text = "Name: " + hit.transform.name + " \nEasing = TBD" + "\nReturns? + t/f";
+                }
+                else
+                {
+                    StartCoroutine(HidePanel());
+                }
             }
         }
 
+    }
+
+    private IEnumerator RevealPanel()
+    {
+        float time = 0f;
+        while (time < 1)
+        {
+            panel.alpha = Eases.Linear(time);
+            time += Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+    }
+
+    private IEnumerator HidePanel()
+    {
+        float time = 0f;
+        while (time < 1)
+        {
+            panel.alpha = 1 - Eases.Linear(time);
+            time += Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
     }
 }

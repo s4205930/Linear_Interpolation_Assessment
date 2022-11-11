@@ -5,15 +5,15 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     private float speed = 10f;
-    private float mouseSens = 1f;
+    private float mouseSens = 1000f;
     void Update()
     {
 
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
         transform.position += move * speed * Time.deltaTime;
 
-        Vector2 rotate = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * mouseSens * Time.deltaTime;
-        transform.Rotate(rotate.x, rotate.y);
+        Vector3 rotate = new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0f) * mouseSens * Time.deltaTime;
+        //transform.Rotate(rotate);
         
     }
 }
