@@ -86,7 +86,7 @@ public class Eases
 
         public static float Bounce (float t)
         {
-            return MathF.Abs(MathF.Sin(t)) - MathF.Pow(MathF.Abs(MathF.Cos(t)), 100);
+            return MathF.Abs(MathF.Abs(MathF.Sin(t * MathF.PI)) - MathF.Pow(MathF.Abs(MathF.Cos(t * MathF.PI)), 100));
         }
     }
 
