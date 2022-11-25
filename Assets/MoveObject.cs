@@ -17,15 +17,23 @@ public class MoveObject : MonoBehaviour
     {
         Translate, Rotate, Scale, Colour
     }
-    lerpState currentState = lerpState.Translate;
+    [SerializeField] public lerpState currentState = lerpState.Translate;
     private float t;
     private float xPos = 0f;
+    private float xPosNew = 0f;
+    private float dist = 10f;
+    private bool polarity = true;
     
     
 
     public void startLerp()
     {
         StartCoroutine(Lerp());
+    }
+
+    public lerpState getState()
+    {
+        return currentState;
     }
 
     private IEnumerator Lerp()
@@ -35,12 +43,22 @@ public class MoveObject : MonoBehaviour
 
         while (time < 1)
         {
-            t = Eases.Quadratic.InOut(time);
+            t = Eases.Custom.test(time);
 
             xPos += Time.deltaTime * 10;
             time += Time.deltaTime;
+
+            if (!polarity)
+            {
+                t = 1 - t;
+                xPosNew = 10 - xPos;
+            }
+            else { xPosNew = xPos; }
+
             yield return new WaitForSeconds(Time.deltaTime);
         }
+
+        polarity = !polarity;
 
         
     }    
@@ -50,7 +68,7 @@ public class MoveObject : MonoBehaviour
 
         if (currentState == lerpState.Translate)
         {
-            transform.localPosition = new Vector3(xPos, t * 10, 0f);
+            transform.position = new Vector3(xPosNew, t * dist, 0f);
         }
         else if (currentState == lerpState.Rotate)
         {

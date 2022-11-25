@@ -77,17 +77,7 @@ public class Eases
 
     public class Custom
     {
-        public static float test(float t)
-        {
-            if (t == 0f) return 0f;
-            if (t == 1f) return 1f;
-            else return MathF.Cos(t * MathF.PI * MathF.PI);
-        }
-
-        public static float Bounce (float t)
-        {
-            return MathF.Abs(MathF.Abs(MathF.Sin(t * MathF.PI)) - MathF.Pow(MathF.Abs(MathF.Cos(t * MathF.PI)), 100));
-        }
+        
     }
 
 }
