@@ -11,12 +11,17 @@ public class MoveObject : MonoBehaviour
     /// </summary>
 
 
-    [SerializeField] private float growth = 1f;
-    [SerializeField] private Slider progress;
-    [SerializeField] enum Scene {Transform, Scale, Rotate, Colour}
-    private float t;
     
-    //Public function to call lerp from UI button
+    [SerializeField] private Slider progress;
+    public enum lerpState
+    {
+        Translate, Rotate, Scale, Colour
+    }
+    lerpState currentState = lerpState.Translate;
+    private float t;
+    private float xPos = 0f;
+    
+    
 
     public void startLerp()
     {
@@ -26,23 +31,35 @@ public class MoveObject : MonoBehaviour
     private IEnumerator Lerp()
     {
         float time = 0f;
+        xPos = 0f;
 
         while (time < 1)
         {
             t = Eases.Quadratic.InOut(time);
 
+            xPos += Time.deltaTime * 10;
             time += Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
+
+        
     }    
 
     void Update()
-    {
+    {        
 
-        transform.localScale = Vector3.one * Mathf.Lerp(1, growth, t);
-        float rot = Mathf.InverseLerp(0, 1, t) * 720f;
-        transform.localEulerAngles = new Vector3(0f, 0f, rot);
-        progress.value = Mathf.InverseLerp(0, 1, t);
-        
+        if (currentState == lerpState.Translate)
+        {
+            transform.localPosition = new Vector3(xPos, t * 10, 0f);
+        }
+        else if (currentState == lerpState.Rotate)
+        {
+            float rot = Mathf.InverseLerp(0, 1, t) * 720f;
+            transform.localEulerAngles = new Vector3(0f, 0f, rot);
+        }
+        else if (currentState == lerpState.Scale)
+        {
+            transform.localScale = Vector3.one * Mathf.Lerp(1, 3, t);
+        }
     }
 }
