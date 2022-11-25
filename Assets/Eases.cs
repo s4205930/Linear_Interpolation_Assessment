@@ -12,7 +12,7 @@ public class Eases
         return t;
     }
 
-    public class Qudratic
+    public class Quadratic
     {
         public static float In(float t)
         {

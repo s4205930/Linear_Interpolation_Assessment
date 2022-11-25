@@ -13,6 +13,7 @@ public class MoveObject : MonoBehaviour
 
     [SerializeField] private float growth = 1f;
     [SerializeField] private Slider progress;
+    [SerializeField] enum Scene {Transform, Scale, Rotate, Colour}
     private float t;
     
     //Public function to call lerp from UI button
@@ -28,7 +29,7 @@ public class MoveObject : MonoBehaviour
 
         while (time < 1)
         {
-            t = Eases.Qudratic.InOut(time);
+            t = Eases.Quadratic.InOut(time);
 
             time += Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);

@@ -35,7 +35,7 @@ public class CustomLerp : MonoBehaviour
         {
             float perc = 0;
 
-            perc = Eases.Qudratic.InOut(time);
+            perc = Eases.Quadratic.InOut(time);
 
             lerpFloat = Lerps(0, dist, perc);
             xPos += (Time.deltaTime * dist);

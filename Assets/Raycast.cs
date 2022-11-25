@@ -30,8 +30,8 @@ public class Raycast : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Debug.DrawLine(ray.origin, hit.point, Color.red, 5f);
-                if (hit.transform.TryGetComponent(out CustomLerp mo)) { 
-                    mo.StartLerp();
+                if (hit.transform.TryGetComponent(out MoveObject mo)) { 
+                    mo.startLerp();
                     StartCoroutine(RevealPanel());
                     objectText.text = "Name: " + hit.transform.name + " \nEasing = TBD" + "\nReturns? + t/f";
                 }
@@ -40,6 +40,9 @@ public class Raycast : MonoBehaviour
                     StartCoroutine(HidePanel());
                 }
             }
+        }else if (Input.GetMouseButtonDown(1))
+        {
+            //CameraShake & ObjectReset
         }
 
     }

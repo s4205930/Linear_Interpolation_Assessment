@@ -16,4 +16,11 @@ public class CameraMovement : MonoBehaviour
         //transform.Rotate(rotate);
         
     }
+
+    public void shake()
+    {
+
+        transform.localPosition = new Vector3(Mathf.PerlinNoise(0, Time.time) * 2 - 1, 0, 0) * 0.5f;
+
+    }
 }
