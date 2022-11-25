@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,7 +42,39 @@ public class MoveObject : MonoBehaviour
 
         while (time < 1)
         {
-            t = Eases.Custom.test(time);
+            //t = Eases.Custom.test(time);
+            
+            switch (UI_Controller.functionSelection)
+            {
+                case 0:
+                    t = Eases.Linear(time);
+                    break;
+                case 1:
+                    t = Eases.Quadratic.In(time);
+                    break;
+                case 2:
+                    t = Eases.Quadratic.Out(time);
+                    break;
+                case 3:
+                    t = Eases.Quadratic.InOut(time);
+                    break;
+                case 4:
+                    t = Eases.Trig.SinIn(time);
+                    break;
+                case 5:
+                    t = Eases.Trig.SinOut(time);
+                    break;
+                case 6:
+                    t = Eases.Other.InElastic(time);
+                    break;
+                case 7:
+                    t = Eases.Other.OutElastic(time);
+                    break;
+                case 8:
+                    t = Eases.Other.InOutElastic(time);
+                    break;
+                   
+            }
 
             xPos += Time.deltaTime * 10;
             time += Time.deltaTime;

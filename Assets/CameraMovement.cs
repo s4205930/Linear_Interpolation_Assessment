@@ -20,7 +20,9 @@ public class CameraMovement : MonoBehaviour
     public void shake()
     {
 
-        transform.localPosition = new Vector3(Mathf.PerlinNoise(0, Time.time) * 2 - 1, 0, 0) * 0.5f;
+        transform.localPosition += new Vector3(Mathf.PerlinNoise(0, Time.time) * 2 - 1,
+            Mathf.PerlinNoise(0, Time.time) * 2 - 1,
+            Mathf.PerlinNoise(0, Time.time) * 2 - 1) * 0.5f;
 
     }
 }
