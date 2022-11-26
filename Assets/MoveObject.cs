@@ -30,6 +30,11 @@ public class MoveObject : MonoBehaviour
         StartCoroutine(Lerp());
     }
 
+    public void StartCamLerp()
+    {
+        //translate only lerp
+    }
+
     public lerpState getState()
     {
         return currentState;
