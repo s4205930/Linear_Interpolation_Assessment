@@ -22,6 +22,8 @@ public class MoveObject : MonoBehaviour
     private float xPosNew = 0f;
     private float dist = 10f;
     private bool polarity = true;
+    private Vector3 startPos;
+    private Vector3 newPos;
     
     
 
@@ -97,14 +99,20 @@ public class MoveObject : MonoBehaviour
         polarity = !polarity;
 
         
-    }    
+    }
+
+    private void Start()
+    {
+        startPos = transform.position;
+    }
 
     void Update()
     {        
 
         if (currentState == lerpState.Translate)
         {
-            transform.position = new Vector3(xPosNew, t * dist, 0f);
+            newPos = startPos + new Vector3(xPosNew, t * dist, 0f);
+            transform.position = newPos;
         }
         else if (currentState == lerpState.Rotate)
         {
