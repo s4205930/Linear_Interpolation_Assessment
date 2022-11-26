@@ -28,7 +28,7 @@ public class Raycast : MonoBehaviour
             }
         }else if (Input.GetMouseButtonDown(1))
         {
-            //CameraShake & ObjectReset
+            CameraMovement.shake();
         }
 
     }
