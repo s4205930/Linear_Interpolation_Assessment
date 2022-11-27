@@ -16,7 +16,7 @@ public class MoveObject : MonoBehaviour
     {
         Translate, Rotate, Scale, Colour
     }
-    [SerializeField] public lerpState currentState = lerpState.Translate;
+    public static lerpState currentState = lerpState.Translate;
     private float t;
     private float xPos = 0f;
     private float xPosNew = 0f;
@@ -37,9 +37,21 @@ public class MoveObject : MonoBehaviour
         //translate only lerp
     }
 
-    public lerpState getState()
+    public static int getStateNum()
     {
-        return currentState;
+        switch (currentState)
+        {
+            case lerpState.Translate:
+                return 0;
+            case lerpState.Rotate:
+                return 1;
+            case lerpState.Scale:
+                return 2;
+            case lerpState.Colour:
+                return 3;
+            default:
+                return 4;
+        }
     }
 
     private IEnumerator Lerp()
@@ -111,7 +123,11 @@ public class MoveObject : MonoBehaviour
 
         if (currentState == lerpState.Translate)
         {
-            newPos = startPos + new Vector3(xPosNew, t * dist, 0f);
+            //newPos = startPos + new Vector3(xPosNew, t * dist, 0f);
+            newPos.x = startPos.x + xPosNew;
+            newPos.y = startPos.y + t * dist;
+            newPos.z = startPos.z;
+            //transform.position = new Vector3(xPosNew, t * dist, 0f);
             transform.position = newPos;
         }
         else if (currentState == lerpState.Rotate)

@@ -9,6 +9,11 @@ public class CameraMovement : MonoBehaviour
         
     }
 
+    public static void camMove(bool direction)
+    {
+
+    }
+
     public void shake()
     {
 
