@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44153997, g: 0.4904058, b: 0.57041633, a: 1}
+  m_IndirectSpecularColor: {r: 0.44153973, g: 0.4904055, b: 0.570416, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -637,7 +637,7 @@ GameObject:
   - component: {fileID: 375554480}
   - component: {fileID: 375554479}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2018,7 +2018,7 @@ GameObject:
   - component: {fileID: 883584123}
   - component: {fileID: 883584122}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2862,7 +2862,7 @@ GameObject:
   - component: {fileID: 1382781319}
   - component: {fileID: 1382781318}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2876,7 +2876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382781316}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -5, z: 3}
+  m_LocalPosition: {x: 0, y: -5, z: 4.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

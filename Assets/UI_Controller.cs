@@ -21,7 +21,8 @@ public class UI_Controller : MonoBehaviour
 
         if (currentStateNum == 0 || currentStateNum == 1 || currentStateNum == 2)
         {
-            CameraMovement.startCamMove(true);
+            
+            //CameraMovement.startCamMove(true);
             //updateText(currentState)
         }
     }
@@ -31,7 +32,7 @@ public class UI_Controller : MonoBehaviour
 
         if (currentStateNum == 1 || currentStateNum == 2 || currentStateNum == 3)
         {
-            CameraMovement.startCamMove(false);
+            //startCamMove(false);
             //updateText(currentState)
         }
     }

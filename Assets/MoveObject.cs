@@ -22,6 +22,7 @@ public class MoveObject : MonoBehaviour
     private float xPosNew = 0f;
     private float dist = 10f;
     private bool polarity = true;
+    private bool moving = false;
     private Vector3 startPos;
     private Vector3 newPos;
     
@@ -56,59 +57,67 @@ public class MoveObject : MonoBehaviour
 
     private IEnumerator Lerp()
     {
-        float time = 0f;
-        xPos = 0f;
 
-        while (time < 1)
+        if (!moving)
         {
-            //t = Eases.Custom.test(time);
-            
-            switch (UI_Controller.functionSelection)
+            moving = true;
+            float time = 0f;
+            xPos = 0f;
+
+            while (time < 1)
             {
-                case 0:
-                    t = Eases.Linear(time);
-                    break;
-                case 1:
-                    t = Eases.Quadratic.In(time);
-                    break;
-                case 2:
-                    t = Eases.Quadratic.Out(time);
-                    break;
-                case 3:
-                    t = Eases.Quadratic.InOut(time);
-                    break;
-                case 4:
-                    t = Eases.Trig.SinIn(time);
-                    break;
-                case 5:
-                    t = Eases.Trig.SinOut(time);
-                    break;
-                case 6:
-                    t = Eases.Other.InElastic(time);
-                    break;
-                case 7:
-                    t = Eases.Other.OutElastic(time);
-                    break;
-                case 8:
-                    t = Eases.Other.InOutElastic(time);
-                    break;
-                   
+                //t = Eases.Custom.test(time);
+
+                switch (UI_Controller.functionSelection)
+                {
+                    case 0:
+                        t = Eases.Linear(time);
+                        break;
+                    case 1:
+                        t = Eases.Quadratic.In(time);
+                        break;
+                    case 2:
+                        t = Eases.Quadratic.Out(time);
+                        break;
+                    case 3:
+                        t = Eases.Quadratic.InOut(time);
+                        break;
+                    case 4:
+                        t = Eases.Trig.SinIn(time);
+                        break;
+                    case 5:
+                        t = Eases.Trig.SinOut(time);
+                        break;
+                    case 6:
+                        t = Eases.Other.InElastic(time);
+                        break;
+                    case 7:
+                        t = Eases.Other.OutElastic(time);
+                        break;
+                    case 8:
+                        t = Eases.Other.InOutElastic(time);
+                        break;
+
+                }
+
+                xPos += Time.deltaTime * 10;
+                time += Time.deltaTime;
+
+                if (!polarity)
+                {
+                    t = 1 - t;
+                    xPosNew = 10 - xPos;
+                }
+                else { xPosNew = xPos; }
+
+                yield return new WaitForSeconds(Time.deltaTime);
             }
 
-            xPos += Time.deltaTime * 10;
-            time += Time.deltaTime;
-
-            if (!polarity)
-            {
-                t = 1 - t;
-                xPosNew = 10 - xPos;
-            }
-            else { xPosNew = xPos; }
-
-            yield return new WaitForSeconds(Time.deltaTime);
+            polarity = !polarity;
+            moving = false;
         }
 
-        polarity = !polarity;
+        
 
         
     }

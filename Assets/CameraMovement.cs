@@ -17,12 +17,12 @@ public class CameraMovement : MonoBehaviour
         startPos = transform.position.x;
     }
 
-    public static void startCamMove(bool direction)
+    public void startCamMove(bool direction)
     {
-        camMove(direction);
+        StartCoroutine(camMove(direction));
     }
 
-    private static IEnumerator camMove(bool direction)
+    private IEnumerator camMove(bool direction)
     {
         if (!moving)
         {
