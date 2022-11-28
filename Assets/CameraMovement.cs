@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,20 +11,24 @@ public class CameraMovement : MonoBehaviour
     static float endPos;
     static float delta;
     static bool moving;
-    static bool moveLR;
-    CameraMovement cam;
+    static bool moveLR = true;
 
     private void Start()
     {
         startPos = transform.position.x;
     }
 
-    public void startCamMove(bool direction)
+    public static void startCamMove(bool direction, MonoBehaviour instance)
     {
-        StartCoroutine(camMove(direction));
+        instance.StartCoroutine(camMove(direction));
     }
 
-    private IEnumerator camMove(bool direction)
+    private float getStart()
+    {
+        return transform.position.x;
+    }
+
+    private static IEnumerator camMove(bool direction)
     {
         if (!moving)
         {

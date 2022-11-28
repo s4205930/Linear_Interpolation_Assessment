@@ -52,6 +52,34 @@ public class MoveObject : MonoBehaviour
         }
     }
 
+    public static void updateState(int current, bool change)
+    {
+        if (change)
+        {
+            current++;
+        }
+        else
+        {
+            current--;
+        }
+
+        switch (current)
+        {
+            case 0:
+                currentState = lerpState.Translate;
+                break;
+            case 1:
+                currentState = lerpState.Rotate;
+                break;
+            case 2:
+                currentState = lerpState.Scale;
+                break;
+            case 3:
+                currentState = lerpState.Colour;
+                break;
+        }
+    }
+
     private IEnumerator Lerp()
     {
 

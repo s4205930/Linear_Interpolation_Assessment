@@ -7,40 +7,65 @@ using static MoveObject.lerpState;
 public class UI_Controller : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown function;
+    [SerializeField] private TextMeshProUGUI title;
+
     
     public static int functionSelection;
     public int currentStateNum;
-    CameraMovement cam;
 
     public void UpdateDropDownFunction()
     {
         functionSelection = function.value;
     }
 
-    public void rightButtonClick()
+    public void RightButtonClick()
     {
+        currentStateNum = MoveObject.getStateNum();
 
         if (currentStateNum == 0 || currentStateNum == 1 || currentStateNum == 2)
         {
-            
-            CameraMovement.startCamMove(true);
-            //updateText(currentState, true);
+            CameraMovement.startCamMove(true, this);
+            MoveObject.updateState(currentStateNum, true);
+            UpdateText();
         }
     }
 
-    public void leftButtonClick()
+    public void LeftButtonClick()
     {
+        currentStateNum = MoveObject.getStateNum();
 
         if (currentStateNum == 1 || currentStateNum == 2 || currentStateNum == 3)
         {
-            //startCamMove(false);
-            //updateText(currentState, false);
+            CameraMovement.startCamMove(false, this);
+            MoveObject.updateState(currentStateNum, false);
+            UpdateText();
+        }
+    }
+
+    private void UpdateText()
+    {
+        currentStateNum = MoveObject.getStateNum();
+
+        switch (currentStateNum)
+        {
+            case 0:
+                title.SetText("Translate");
+                break;
+            case 1:
+                title.SetText("Rotate");
+                break;
+            case 2:
+                title.SetText("Scale");
+                break;
+            case 3:
+                title.SetText("Colour");
+                break;
         }
     }
 
     private void Start()
     {
-        currentStateNum = MoveObject.getStateNum();
+        UpdateText();
     }
 
     // Update is called once per frame
