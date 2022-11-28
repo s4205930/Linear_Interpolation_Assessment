@@ -22,9 +22,14 @@ public class MoveObject : MonoBehaviour
     private float xPosNew = 0f;
     private float dist = 10f;
     private bool polarity = true;
-    private bool moving = false;
+    public static bool moving = false;
     private Vector3 startPos;
     private Vector3 newPos;
+    private Vector3 startRot = new Vector3(0f, 0f, 0f);
+    private Vector3 newRot;
+    private Vector3 startScale = new Vector3(2f, 2f, 2f);
+    private Vector3 newScale;
+    private Color32 rgbValue;
     
     
 
@@ -91,8 +96,6 @@ public class MoveObject : MonoBehaviour
 
             while (time < 1)
             {
-                //t = Eases.Custom.test(time);
-
                 switch (UI_Controller.functionSelection)
                 {
                     case 0:
@@ -157,21 +160,27 @@ public class MoveObject : MonoBehaviour
 
         if (currentState == lerpState.Translate)
         {
-            //newPos = startPos + new Vector3(xPosNew, t * dist, 0f);
             newPos.x = startPos.x + xPosNew;
             newPos.y = startPos.y + t * dist;
             newPos.z = startPos.z;
-            //transform.position = new Vector3(xPosNew, t * dist, 0f);
             transform.position = newPos;
         }
         else if (currentState == lerpState.Rotate)
         {
-            float rot = Mathf.InverseLerp(0, 1, t) * 720f;
-            transform.localEulerAngles = new Vector3(0f, 0f, rot);
+            //transform.localEulerAngles = new Vector3(0f, 0f, rot);
+            newRot.z = startRot.z + (t * 720);
+            transform.localEulerAngles = newRot;
+
+
+            //transform.localEulerAngles
         }
         else if (currentState == lerpState.Scale)
         {
-            transform.localScale = Vector3.one * Mathf.Lerp(1, 3, t);
+            //transform.localScale = Vector3.one * Mathf.Lerp(1, 3, t);
+        }
+        else if (currentState == lerpState.Colour)
+        {
+            //
         }
     }
 }

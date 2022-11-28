@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour
     static float startPos;
     static float endPos;
     static float delta;
-    static bool moving;
+    public static bool moving;
     static bool moveLR = true;
 
     private void Start()
@@ -23,11 +23,6 @@ public class CameraMovement : MonoBehaviour
         instance.StartCoroutine(camMove(direction));
     }
 
-    private float getStart()
-    {
-        return transform.position.x;
-    }
-
     private static IEnumerator camMove(bool direction)
     {
         if (!moving)
@@ -36,19 +31,20 @@ public class CameraMovement : MonoBehaviour
             moveLR = direction;
 
             if (moveLR) { endPos = startPos + 20; }
-            else { startPos = startPos - 20; }
+            else { endPos = startPos - 20; }
 
             float time = 0f;
 
             while (time <= 1)
             {
-                delta = Eases.Other.InOutElastic(time) * 20;
+                delta = Eases.Quadratic.InOut(time) * 20;
                 time += Time.deltaTime;
 
                 yield return new WaitForSeconds(Time.deltaTime);
             }
 
             startPos = endPos;
+            delta = 0;
             moving = false;
         }
     }
@@ -70,7 +66,8 @@ public class CameraMovement : MonoBehaviour
     public void shake()
     {
 
-        transform.localPosition += new Vector3(Mathf.PerlinNoise(0, Time.time) * 2 - 1,
+        transform.localPosition += new Vector3(
+            Mathf.PerlinNoise(0, Time.time) * 2 - 1,
             Mathf.PerlinNoise(0, Time.time) * 2 - 1,
             Mathf.PerlinNoise(0, Time.time) * 2 - 1) * 0.5f;
 
