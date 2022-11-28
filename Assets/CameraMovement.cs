@@ -37,7 +37,7 @@ public class CameraMovement : MonoBehaviour
 
             while (time <= 1)
             {
-                delta = Eases.Quadratic.InOut(time) * 20;
+                delta = Eases.Other.InOutElastic(time) * 20;
                 time += Time.deltaTime;
 
                 yield return new WaitForSeconds(Time.deltaTime);
@@ -58,18 +58,19 @@ public class CameraMovement : MonoBehaviour
         else
         {
             transform.position = new Vector3(startPos - delta, 5f, -15f);
-
         }
 
     }
 
-    public void shake()
+    public static void startCamShake(MonoBehaviour instance)
     {
-
-        transform.localPosition += new Vector3(
-            Mathf.PerlinNoise(0, Time.time) * 2 - 1,
-            Mathf.PerlinNoise(0, Time.time) * 2 - 1,
-            Mathf.PerlinNoise(0, Time.time) * 2 - 1) * 0.5f;
-
+        //instance.StartCoroutine(camShake());
     }
+
+    //private static IEnumerator camShake()
+    //{
+
+        //transform.localPosition += new Vector3(Mathf.PerlinNoise(0, Time.time) * 2 - 1,Mathf.PerlinNoise(0, Time.time) * 2 - 1,Mathf.PerlinNoise(0, Time.time) * 2 - 1) * 0.5f;
+
+    //}
 }

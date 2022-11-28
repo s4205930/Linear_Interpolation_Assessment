@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,11 +26,11 @@ public class MoveObject : MonoBehaviour
     public static bool moving = false;
     private Vector3 startPos;
     private Vector3 newPos;
-    private Vector3 startRot = new Vector3(0f, 0f, 0f);
+    private Vector3 startRot;
     private Vector3 newRot;
-    private Vector3 startScale = new Vector3(2f, 2f, 2f);
-    private Vector3 newScale;
-    private Color32 rgbValue;
+    private Material material;
+    private Color32 startRGB = new Color32(0, 0, 0, 0);
+    private Color32 newRGB;
     
     
 
@@ -153,6 +154,8 @@ public class MoveObject : MonoBehaviour
     private void Start()
     {
         startPos = transform.position;
+        startRot = transform.localEulerAngles;
+        material = GetComponent<Renderer>().material;
     }
 
     void Update()
@@ -167,20 +170,19 @@ public class MoveObject : MonoBehaviour
         }
         else if (currentState == lerpState.Rotate)
         {
-            //transform.localEulerAngles = new Vector3(0f, 0f, rot);
             newRot.z = startRot.z + (t * 720);
             transform.localEulerAngles = newRot;
-
-
-            //transform.localEulerAngles
         }
         else if (currentState == lerpState.Scale)
         {
-            //transform.localScale = Vector3.one * Mathf.Lerp(1, 3, t);
+            transform.localScale = Vector3.one * (t + 1) * 3;
         }
         else if (currentState == lerpState.Colour)
         {
-            //
+            byte newAlpha = Convert.ToByte(t * 255);
+            newRGB = new Color32 (startRGB.r, startRGB.g, startRGB.b, newAlpha);
+            gameObject.GetComponent<MeshRenderer>.Material.Color() = newRGB;
+
         }
     }
 }

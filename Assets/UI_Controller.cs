@@ -42,6 +42,11 @@ public class UI_Controller : MonoBehaviour
         }
     }
 
+    public void shakeClick()
+    {
+        CameraMovement.startCamShake(this);
+    }
+
     private void UpdateText()
     {
         currentStateNum = MoveObject.getStateNum();
