@@ -11,6 +11,7 @@ public class CameraMovement : MonoBehaviour
     static float delta;
     static bool moving;
     static bool moveLR;
+    CameraMovement cam;
 
     private void Start()
     {

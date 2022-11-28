@@ -10,6 +10,7 @@ public class UI_Controller : MonoBehaviour
     
     public static int functionSelection;
     public int currentStateNum;
+    CameraMovement cam;
 
     public void UpdateDropDownFunction()
     {
@@ -22,8 +23,8 @@ public class UI_Controller : MonoBehaviour
         if (currentStateNum == 0 || currentStateNum == 1 || currentStateNum == 2)
         {
             
-            //CameraMovement.startCamMove(true);
-            //updateText(currentState)
+            CameraMovement.startCamMove(true);
+            //updateText(currentState, true);
         }
     }
 
@@ -33,7 +34,7 @@ public class UI_Controller : MonoBehaviour
         if (currentStateNum == 1 || currentStateNum == 2 || currentStateNum == 3)
         {
             //startCamMove(false);
-            //updateText(currentState)
+            //updateText(currentState, false);
         }
     }
 
