@@ -8,13 +8,13 @@ public class UpdateText : MonoBehaviour
     private static TextMeshProUGUI title;
     void Start()
     {
-        title = gameObject.GetComponent<TMPro.TextMeshProUGUI>();
+        title = gameObject.GetComponent<TextMeshProUGUI>();
         
     }
 
     public static void UpdateTitle()
     {
-        int currentStateNum = MoveObject.getStateNum();
+        int currentStateNum = LerpScript.getStateNum();
 
         switch (currentStateNum)
         {

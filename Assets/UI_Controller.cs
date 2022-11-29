@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static MoveObject.lerpState;
+using static LerpScript.lerpState;
 using UnityEditor;
 
 public class UI_Controller : MonoBehaviour
@@ -22,44 +22,44 @@ public class UI_Controller : MonoBehaviour
     public static int functionSelection;
     public int currentStateNum;
 
-    public void UpdateDropDownFunction()
+    private void UpdateDropDownFunction()
     {
         functionSelection = function.value;
     }
 
-    public void UpdateToggleTran(bool tog)
+    private void UpdateToggleTran(bool tog)
     {
         tranBool = tog;
     }
-    public void UpdateToggleRot(bool tog)
+    private void UpdateToggleRot(bool tog)
     {
         rotBool = tog;
     }
-    public void UpdateToggleSca(bool tog)
+    private void UpdateToggleSca(bool tog)
     {
         scaBool = tog;
     }
 
     public void RightButtonClick()
     {
-        currentStateNum = MoveObject.getStateNum();
+        currentStateNum = LerpScript.getStateNum();
 
-        if (currentStateNum == 0 || currentStateNum == 1 || currentStateNum == 2)
+        if ((currentStateNum == 0 || currentStateNum == 1 || currentStateNum == 2) && !CameraMovement.moving)
         {
             CameraMovement.startCamMove(true, this);
-            MoveObject.updateState(currentStateNum, true);
+            LerpScript.updateState(currentStateNum, true);
             UpdateText.UpdateTitle();
         }
     }
 
     public void LeftButtonClick()
     {
-        currentStateNum = MoveObject.getStateNum();
+        currentStateNum = LerpScript.getStateNum();
 
-        if (currentStateNum == 1 || currentStateNum == 2 || currentStateNum == 3)
+        if ((currentStateNum == 1 || currentStateNum == 2 || currentStateNum == 3) && !CameraMovement.moving)
         {
             CameraMovement.startCamMove(false, this);
-            MoveObject.updateState(currentStateNum, false);
+            LerpScript.updateState(currentStateNum, false);
             UpdateText.UpdateTitle();
             
         }
@@ -73,11 +73,5 @@ public class UI_Controller : MonoBehaviour
     private void Start()
     {
         UpdateText.UpdateTitle();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

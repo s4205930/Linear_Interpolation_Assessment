@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class MoveObject : MonoBehaviour
+public class LerpScript : MonoBehaviour
 {
     
     public enum lerpState
@@ -12,7 +12,7 @@ public class MoveObject : MonoBehaviour
         Translate, Rotate, Scale, Combination
     }
     [SerializeField] public static lerpState currentState = lerpState.Translate;
-    private static float t;
+    public static float t;
     private float xPos = 0f;
     private float xPosNew = 0f;
     private float dist = 10f;
@@ -167,7 +167,7 @@ public class MoveObject : MonoBehaviour
         }
         else if (currentState == lerpState.Rotate)
         {
-            newRot.z = startRot.z + (t * 360);
+            newRot.z = startRot.z + (-t * 360);
             transform.localEulerAngles = newRot;
         }
         else if (currentState == lerpState.Scale)
@@ -183,9 +183,13 @@ public class MoveObject : MonoBehaviour
                 newPos.z = startPos.z;
                 transform.position = newPos;
             }
+            else
+            {
+                transform.position = new Vector3(startPos.x + 5, startPos.y + 5, startPos.z);
+            }
             if (UI_Controller.rotBool)
             {
-                newRot.z = startRot.z + (t * 360);
+                newRot.z = startRot.z + (-t * 360);
                 transform.localEulerAngles = newRot;
             }
             if (UI_Controller.scaBool)

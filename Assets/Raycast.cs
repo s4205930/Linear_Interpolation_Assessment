@@ -5,13 +5,6 @@ using TMPro;
 
 public class Raycast : MonoBehaviour
 {
-
-    
-    void Start()
-    {        
-    }
-
-    // Update is called once per frame
     void Update()
     { 
 
@@ -22,13 +15,10 @@ public class Raycast : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Debug.DrawLine(ray.origin, hit.point, Color.red, 5f);
-                if (hit.transform.TryGetComponent(out MoveObject mo)) { 
+                if (hit.transform.TryGetComponent(out LerpScript mo)) { 
                     mo.startLerp();
                 }
             }
-        }else if (Input.GetMouseButtonDown(1))
-        {
-            //CameraMovement.startCamMove(true);
         }
 
     }
