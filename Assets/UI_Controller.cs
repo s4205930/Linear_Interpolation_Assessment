@@ -14,21 +14,26 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] public static GameObject rot;
     [SerializeField] public static GameObject sca;
 
-    //Defining public booleans for the 
+    //Defining public booleans for the toggles
     public static bool tranBool;
     public static bool rotBool;
     public static bool scaBool;
     
 
-    
+    //Defining ints for the dropdown menu and the lerp state
     public static int functionSelection;
     public int currentStateNum;
 
+
+
+    //Method called whenever the drop down in the ui in changed and takes the value and applies it to the public integer
     public void UpdateDropDownFunction()
     {
         functionSelection = function.value;
     }
 
+
+    //Public methods for the toggles that are called whenever the corresponding toggle is updated and applies it to the public boolean
     public void UpdateToggleTran(bool tog)
     {
         tranBool = tog;
@@ -42,6 +47,9 @@ public class UI_Controller : MonoBehaviour
         scaBool = tog;
     }
 
+
+
+    //Public methods that are called when the corresponding button is pressed that selects the correct camera lerp to apply and updates the UI and lerp state
     public void RightButtonClick()
     {
         currentStateNum = LerpScript.getStateNum();
@@ -72,6 +80,8 @@ public class UI_Controller : MonoBehaviour
         CameraMovement.startCamShake(this);
     }
 
+
+    //Sets the UI elements up when the program runs
     private void Start()
     {
         UpdateText.UpdateTitle();

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 public class Eases
 {
 
+    //Class containing all the easing functions
+
     public static float Linear (float t)
     {
         return t;
@@ -43,6 +45,8 @@ public class Eases
             return MathF.Sin(t * MathF.PI * 0.5f);
         }
 
+
+        //Only for camera shake
         public static float Sine(float t)
         {
             return MathF.Sin(t * MathF.PI * 2);
@@ -79,11 +83,5 @@ public class Eases
             else return (MathF.Pow(2, -20 * t + 10) * MathF.Sin((20 * t - 11.125f) * cons)) / 2 + 1;
         }
     }
-
-    public class Custom
-    {
-        
-    }
-
 }
 

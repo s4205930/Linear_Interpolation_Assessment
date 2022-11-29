@@ -41,7 +41,7 @@ public class CameraMovement : MonoBehaviour
             moving = true;
             moveLR = direction;
 
-            if (moveLR) { endPos = startPos + 20; }
+            if (moveLR) { endPos = startPos + 20; } // Uses the moveLR boolean to find where the camer should be at the end of the lerp
             else { endPos = startPos - 20; }
 
             float time = 0f;
@@ -54,17 +54,21 @@ public class CameraMovement : MonoBehaviour
                 yield return new WaitForSeconds(Time.deltaTime);
             }
 
-            startPos = endPos;
+            startPos = endPos; //Sets up the startPos for the next camera lerp and sets delta to 0 as that would effect the camera's position
             delta = 0;
             moving = false;
         }
     }
 
+
+    //Public method so UI_Controller can start the camera shake lerp
     public static void startCamShake(MonoBehaviour instance)
     {
         instance.StartCoroutine(camShake());
     }
 
+
+    //IEnumerator that contais the equation for the camera shake lerp
     private static IEnumerator camShake()
     {
         float time = 0f;
@@ -72,7 +76,7 @@ public class CameraMovement : MonoBehaviour
 
         while (time <= 0.5)
         {
-            deltaS = Eases.Trig.Sine(time * 2) * 4;
+            deltaS = Eases.Trig.Sine(time * 2) * 4; // Uses a sine function so the camera naturally returns to its original position when the sine function returns to 0
             time += Time.deltaTime;
 
             yield return new WaitForSeconds(Time.deltaTime);
