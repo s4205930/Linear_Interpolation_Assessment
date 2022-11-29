@@ -33,16 +33,6 @@ public class LerpScript : MonoBehaviour
     //Defining boolean that is true when an object is lerping so that a lerp cannot be applied whilst the object is already under motion
     public static bool moving = false;
 
-
-        
-    
-
-    //Public method that allows the raycasting script to activate the coroutine: Lerp();
-    public void startLerp()
-    {
-        StartCoroutine(Lerp());
-    }
-
    
     //Returns a number that corresponds to the current lerp state
     public static int getStateNum()
@@ -93,6 +83,12 @@ public class LerpScript : MonoBehaviour
         }
 
         
+    }
+
+    //Public method that allows the raycasting script to activate the coroutine: Lerp();
+    public void startLerp()
+    {
+        StartCoroutine(Lerp());
     }
 
 
