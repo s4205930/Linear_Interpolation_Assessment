@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class Raycast : MonoBehaviour
 {
@@ -21,6 +18,9 @@ public class Raycast : MonoBehaviour
                     ls.startLerp();
                 }
             }
+        }else if (Input.GetKeyDown(KeyCode.Escape))//Ends the program if the user presses escape
+        {
+            Application.Quit();
         }
 
     }
