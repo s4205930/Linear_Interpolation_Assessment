@@ -2,23 +2,17 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class MoveObject : MonoBehaviour
 {
-    /// <summary>
-    /// This script should be added onto an object and use a ui button to start the lerp
-    /// and a slider to indicate the progress of the lerp
-    /// </summary>
-
-
     
-    [SerializeField] private Slider progress;
     public enum lerpState
     {
-        Translate, Rotate, Scale, Colour
+        Translate, Rotate, Scale, Combination
     }
-    public static lerpState currentState = lerpState.Translate;
-    private float t;
+    [SerializeField] public static lerpState currentState = lerpState.Translate;
+    private static float t;
     private float xPos = 0f;
     private float xPosNew = 0f;
     private float dist = 10f;
@@ -27,11 +21,7 @@ public class MoveObject : MonoBehaviour
     private Vector3 startPos;
     private Vector3 newPos;
     private Vector3 startRot;
-    private Vector3 newRot;
-    private Material material;
-    private Color32 startRGB = new Color32(0, 0, 0, 0);
-    private Color32 newRGB;
-    
+    private Vector3 newRot;    
     
 
     public void startLerp()
@@ -51,7 +41,7 @@ public class MoveObject : MonoBehaviour
                 return 1;
             case lerpState.Scale:
                 return 2;
-            case lerpState.Colour:
+            case lerpState.Combination:
                 return 3;
             default:
                 return 4;
@@ -60,6 +50,8 @@ public class MoveObject : MonoBehaviour
 
     public static void updateState(int current, bool change)
     {
+        t = 0;
+
         if (change)
         {
             current++;
@@ -81,9 +73,11 @@ public class MoveObject : MonoBehaviour
                 currentState = lerpState.Scale;
                 break;
             case 3:
-                currentState = lerpState.Colour;
+                currentState = lerpState.Combination;
                 break;
         }
+
+        
     }
 
     private IEnumerator Lerp()
@@ -94,6 +88,7 @@ public class MoveObject : MonoBehaviour
             moving = true;
             float time = 0f;
             xPos = 0f;
+            t = 0;
 
             while (time < 1)
             {
@@ -142,7 +137,10 @@ public class MoveObject : MonoBehaviour
                 yield return new WaitForSeconds(Time.deltaTime);
             }
 
-            polarity = !polarity;
+            if ((currentState == lerpState.Combination && UI_Controller.tranBool || UI_Controller.rotBool || UI_Controller.scaBool)  ||  currentState != lerpState.Combination)
+            {
+                polarity = !polarity;
+            }
             moving = false;
         }
 
@@ -155,7 +153,6 @@ public class MoveObject : MonoBehaviour
     {
         startPos = transform.position;
         startRot = transform.localEulerAngles;
-        material = GetComponent<Renderer>().material;
     }
 
     void Update()
@@ -170,19 +167,31 @@ public class MoveObject : MonoBehaviour
         }
         else if (currentState == lerpState.Rotate)
         {
-            newRot.z = startRot.z + (t * 720);
+            newRot.z = startRot.z + (t * 360);
             transform.localEulerAngles = newRot;
         }
         else if (currentState == lerpState.Scale)
         {
             transform.localScale = Vector3.one * (t + 1) * 3;
         }
-        else if (currentState == lerpState.Colour)
+        else if (currentState == lerpState.Combination)
         {
-            byte newAlpha = Convert.ToByte(t * 255);
-            newRGB = new Color32 (startRGB.r, startRGB.g, startRGB.b, newAlpha);
-            gameObject.GetComponent<MeshRenderer>.Material.Color() = newRGB;
-
+            if (UI_Controller.tranBool)
+            {
+                newPos.x = startPos.x + xPosNew;
+                newPos.y = startPos.y + t * dist;
+                newPos.z = startPos.z;
+                transform.position = newPos;
+            }
+            if (UI_Controller.rotBool)
+            {
+                newRot.z = startRot.z + (t * 360);
+                transform.localEulerAngles = newRot;
+            }
+            if (UI_Controller.scaBool)
+            {
+                transform.localScale = Vector3.one * (t + 1) * 2;
+            }
         }
     }
 }

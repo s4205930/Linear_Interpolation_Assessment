@@ -42,6 +42,11 @@ public class Eases
         {
             return MathF.Sin(t * MathF.PI * 0.5f);
         }
+
+        public static float Sine(float t)
+        {
+            return MathF.Sin(t * MathF.PI * 2);
+        }
     }
 
     public class Other
