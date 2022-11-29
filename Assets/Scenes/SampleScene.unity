@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44154042, g: 0.49040622, b: 0.5704169, a: 1}
+  m_IndirectSpecularColor: {r: 0.44153997, g: 0.4904058, b: 0.57041633, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 32523140}
   - component: {fileID: 32523139}
   - component: {fileID: 32523143}
+  - component: {fileID: 32523144}
   m_Layer: 0
   m_Name: S2Obj
   m_TagString: Untagged
@@ -367,6 +368,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e059c9a1dc5db34195fbf0a4062f430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &32523144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32523138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5b659de67959f4393eca697c0bf542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &62801186
@@ -690,6 +703,8 @@ MonoBehaviour:
     - m_Text: Elastic Out
       m_Image: {fileID: 0}
     - m_Text: Elastic In/Out
+      m_Image: {fileID: 0}
+    - m_Text: Spike
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2509,6 +2524,7 @@ GameObject:
   - component: {fileID: 825708214}
   - component: {fileID: 825708213}
   - component: {fileID: 825708212}
+  - component: {fileID: 825708217}
   m_Layer: 0
   m_Name: S3Obj
   m_TagString: Untagged
@@ -2606,6 +2622,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &825708217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825708211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7123d06257ba31c489dd1d283b78898e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &883584120
 GameObject:
   m_ObjectHideFlags: 0
@@ -3961,7 +3989,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2
+  m_Time: 3
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.3
@@ -4398,6 +4426,7 @@ GameObject:
   - component: {fileID: 1482193119}
   - component: {fileID: 1482193118}
   - component: {fileID: 1482193123}
+  - component: {fileID: 1482193124}
   m_Layer: 0
   m_Name: S1Obj
   m_TagString: Untagged
@@ -4604,6 +4633,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 270c5d24ac8a8894c9f9031b89b7dd6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1482193124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482193116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e059c9a1dc5db34195fbf0a4062f430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1490980842
@@ -4929,6 +4970,7 @@ GameObject:
   - component: {fileID: 1700379993}
   - component: {fileID: 1700379997}
   - component: {fileID: 1700379998}
+  - component: {fileID: 1700379999}
   m_Layer: 0
   m_Name: S4Obj
   m_TagString: Untagged
@@ -5137,6 +5179,18 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1700379999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700379991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14427b10c086ae74b8aa838c912272e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1711406619
 GameObject:
   m_ObjectHideFlags: 0

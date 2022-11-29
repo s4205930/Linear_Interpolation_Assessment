@@ -15,8 +15,8 @@ public class Raycast : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Debug.DrawLine(ray.origin, hit.point, Color.red, 5f);
-                if (hit.transform.TryGetComponent(out LerpScript mo)) { 
-                    mo.startLerp();
+                if (hit.transform.TryGetComponent(out LerpScript ls)) { 
+                    ls.startLerp();
                 }
             }
         }
