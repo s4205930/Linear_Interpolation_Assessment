@@ -704,12 +704,10 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Elastic In/Out
       m_Image: {fileID: 0}
-    - m_Text: Spike
-      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 668642513}
+      - m_Target: {fileID: 128024832}
         m_TargetAssemblyTypeName: UI_Controller, Assembly-CSharp
         m_MethodName: UpdateDropDownFunction
         m_Mode: 1
@@ -772,7 +770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d2cf30b5f5f2f42af154fca5e76e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  function: {fileID: 0}
+  function: {fileID: 128024829}
   title: {fileID: 0}
   currentStateNum: 0
 --- !u!1 &330843499
@@ -2033,7 +2031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   function: {fileID: 128024829}
-  title: {fileID: 1124056413}
+  title: {fileID: 0}
   currentStateNum: 0
 --- !u!1 &705507993
 GameObject:
@@ -2966,7 +2964,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!114 &901569722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3234,7 +3232,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!114 &956357826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3247,7 +3245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d2cf30b5f5f2f42af154fca5e76e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  function: {fileID: 0}
+  function: {fileID: 128024829}
   title: {fileID: 0}
   currentStateNum: 0
 --- !u!1 &963194225
@@ -3810,7 +3808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   function: {fileID: 0}
-  title: {fileID: 1124056413}
+  title: {fileID: 0}
   currentStateNum: 0
 --- !u!114 &1124056417
 MonoBehaviour:
@@ -4940,7 +4938,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!114 &1682524041
 MonoBehaviour:
   m_ObjectHideFlags: 0

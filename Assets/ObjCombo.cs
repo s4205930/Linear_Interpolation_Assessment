@@ -11,13 +11,14 @@ public class ObjCombo : MonoBehaviour
     private Vector3 newRot;
     void Start()
     {
+        //Initialise the start position and roation of the object
         startPos = transform.position;
         startRot = transform.eulerAngles;
-
     }
 
     void Update()
     {
+        // if the current state is combination a series of if statements apply the lerp if the toggle is true
         if (currentState == lerpState.Combination)
         {
             if (UI_Controller.tranBool)
@@ -38,7 +39,7 @@ public class ObjCombo : MonoBehaviour
             }
             if (UI_Controller.scaBool)
             {
-                transform.localScale = Vector3.one * (lerpVal + 1) * 2;
+                transform.localScale = Vector3.one * (lerpVal + 1) * 1.5f;
             }
         }
     }

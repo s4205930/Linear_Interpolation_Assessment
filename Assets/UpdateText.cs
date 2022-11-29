@@ -8,10 +8,12 @@ public class UpdateText : MonoBehaviour
     private static TextMeshProUGUI title;
     void Start()
     {
+        //Gets the object the script is attached to and applies it to the title variable
         title = gameObject.GetComponent<TextMeshProUGUI>();
         
     }
 
+    //Public method that allows other scripts to change the title when the camera moves
     public static void UpdateTitle()
     {
         int currentStateNum = LerpScript.getStateNum();
